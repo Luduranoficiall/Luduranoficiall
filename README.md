@@ -117,7 +117,7 @@ Integração de IA em sistemas, atendimento, vendas e fluxos operacionais
 ☁️ DevOps / Infraestrutura
 
 Docker • GitHub Actions
-Vercel • Cloudflare
+Vercel • 
 CI/CD • Deploy contínuo
 Infra corporativa e escalabilidade
 
