@@ -1,6 +1,19 @@
 # Exercício Intermediário
-# Crie uma função que recebe uma lista de nomes e retorna apenas os nomes que começam com a letra 'A'.
-def filtra_nomes(lista):
-    return [nome for nome in lista if nome.startswith('A')]
+"""
+Filtragem de nomes e desafio extra.
+"""
 
-print(filtra_nomes(['Ana', 'Lucas', 'Amanda', 'Bruno']))
+from typing import List
+
+def filtra_nomes(lista: List[str]) -> List[str]:
+    """Retorna nomes que começam com 'A'."""
+    return [nome for nome in lista if nome.upper().startswith('A')]
+
+nomes = ['Ana', 'Lucas', 'Amanda', 'Bruno']
+print('Nomes com A:', filtra_nomes(nomes))
+
+# Desafio Extra: Retorne nomes com mais de 5 letras
+def nomes_grandes(lista: List[str]) -> List[str]:
+    return [nome for nome in lista if len(nome) > 5]
+
+print('Nomes com mais de 5 letras:', nomes_grandes(nomes))
