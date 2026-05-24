@@ -1,0 +1,6 @@
+import { NextResponse } from "next/server";
+import { z } from "zod";
+import { prisma } from "@/lib/prisma";
+const schema = z.object({ fullName:z.string().min(3), document:z.string().min(11), email:z.string().email().optional(), phone:z.string().optional(), clientType:z.enum(["RESIDENCIAL","COMERCIAL","RURAL","INDUSTRIAL"]), state:z.string().min(2), city:z.string().optional(), utilityCompany:z.string().optional(), averageBillValue:z.number().positive(), consultantId:z.string().optional(), energyPartnerId:z.string().optional(), campaignId:z.string().optional() });
+export async function GET(){ const clients = await prisma.energyClient.findMany({ where:{ deletedAt:null }, orderBy:{ createdAt:"desc" }}); return NextResponse.json({success:true,clients}); }
+export async function POST(request: Request) { try { const data = schema.parse(await request.json()); const client = await prisma.energyClient.create({ data }); await prisma.auditLog.create({ data: { actorId:data.consultantId, entity:"EnergyClient", entityId:client.id, action:"CLIENT_CREATED", after: client } }); return NextResponse.json({ success:true, client }); } catch { return NextResponse.json({ success:false, error:"Erro ao criar cliente" }, { status:400 }); } }
