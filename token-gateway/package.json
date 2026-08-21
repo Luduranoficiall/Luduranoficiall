@@ -1,0 +1,15 @@
+{
+  "name": "token-gateway",
+  "version": "1.0.0",
+  "description": "Gateway local OpenAI-compatible: comprime tokens e roteia entre provedores usando suas próprias chaves de API.",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "dotenv": "^16.4.5",
+    "node-fetch": "^2.7.0"
+  }
+}
